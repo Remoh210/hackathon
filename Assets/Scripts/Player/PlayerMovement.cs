@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask MovementCollision;
     public float TimeToMove = 0.2f;
 
-    //Used by MusicManager
+    //Set by beatListner component
     public bool bAllowToMove = false;
 
     private bool bIsMoving = false;
@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3Int TargetPosition;
     private Vector2 CartesianPos;
 
-    private Vector3Int curDir;
+    private Vector3Int IsoDir;
 
     private Animator Animator;
 
@@ -50,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
             bAllowToMove = false;
             if (!IsColliding(TargetPosition, 0.2f) && Dir != EDirection.NONE)
             {
-                TargetPosition += curDir;
+                TargetPosition += IsoDir;
                 StartCoroutine(MovePlayer(TargetPosition));
             }         
         }
@@ -79,7 +79,6 @@ public class PlayerMovement : MonoBehaviour
     private bool IsColliding(Vector3 TargetPos, float Radius)
     {
         bool bIsCollidng = Physics2D.OverlapCircle(TargetPos, Radius, MovementCollision);
-        //Debug.Log("Colliding");
         return bIsCollidng;
     }
 
@@ -92,22 +91,22 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.W) && !bIsMoving)
         {
-            curDir = Vector3Int.up;
+            IsoDir = Vector3Int.up;
             Dir = EDirection.UP;
         }
         if (Input.GetKeyDown(KeyCode.S) && !bIsMoving)
         {
-            curDir = Vector3Int.down;
+            IsoDir = Vector3Int.down;
             Dir = EDirection.DOWN;
         }
         if (Input.GetKeyDown(KeyCode.D) && !bIsMoving)
         {
-            curDir = Vector3Int.right;
+            IsoDir = Vector3Int.right;
             Dir = EDirection.RIGHT;
         }
         if (Input.GetKeyDown(KeyCode.A) && !bIsMoving)
         {
-            curDir = Vector3Int.left;
+            IsoDir = Vector3Int.left;
             Dir = EDirection.LEFT;
         }
     }

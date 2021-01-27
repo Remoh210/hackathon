@@ -6,23 +6,13 @@ public class MusicManager : MonoBehaviour
 {
     // Start is called before the first frame update
     AudioSource AudioData;
-    public float UpdateStep;
-
-    private float ClipLoudness;
-    private float[] ClipSampleData;
-    private int SampleDataLength = 1024;
 
     public float BeatPerMinute = 100.0f;
     private float BeatInterval = 0.0f;
 
-    private float CurTime;
+    private float CurentTime;
 
     private BeatComponent[] BeatComponents;
-
-    private void Awake()
-    {
-        ClipSampleData = new float[SampleDataLength];
-    }
 
     void Start()
     {
@@ -37,12 +27,10 @@ public class MusicManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!AudioData.isPlaying)
+        if (AudioData.isPlaying)
         {
-            return;
+            UpdateBeat();
         }
-
-        UpdatePlayersMovement();
     }
 
     private void OnGUI()
@@ -59,13 +47,12 @@ public class MusicManager : MonoBehaviour
         }
     }
 
-    private void UpdatePlayersMovement()
+    private void UpdateBeat()
     {
-        CurTime += Time.deltaTime;
-        if (CurTime > BeatInterval)
+        CurentTime += Time.deltaTime;
+        if (CurentTime > BeatInterval)
         {
-            CurTime = 0.0f;
-        
+            CurentTime = 0.0f;
             foreach (BeatComponent comp in BeatComponents)
             {
                 comp.OnBeat();
