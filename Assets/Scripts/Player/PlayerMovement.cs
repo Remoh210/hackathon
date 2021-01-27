@@ -5,8 +5,6 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     //Movement stuff
-    public GameObject testUI;
-
     public Grid MovementGrid;
     public LayerMask MovementCollision;
     public float TimeToMove = 0.2f;

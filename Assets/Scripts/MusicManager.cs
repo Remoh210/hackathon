@@ -12,19 +12,10 @@ public class MusicManager : MonoBehaviour
     private float[] ClipSampleData;
     private int SampleDataLength = 1024;
 
-    public GameObject UIToScale;
-
-    public float SizeFactor = 1;
-    public float MinSize = 0.0f;
-    public float MaxSize = 10.0f;
-
     public float BeatPerMinute = 100.0f;
     private float BeatInterval = 0.0f;
 
-    public float HitTolerance = 0.2f;
     private float CurTime;
-
-    private PlayerMovement[] MovementComponents;
 
     private BeatComponent[] BeatComponents;
 
@@ -39,7 +30,6 @@ public class MusicManager : MonoBehaviour
         AudioData.Play(0);
 
         BeatInterval = 60.0f / BeatPerMinute;
-        MovementComponents = GameObject.FindObjectsOfType<PlayerMovement>();
 
         BeatComponents = GameObject.FindObjectsOfType<BeatComponent>();
     }
@@ -74,13 +64,8 @@ public class MusicManager : MonoBehaviour
         CurTime += Time.deltaTime;
         if (CurTime > BeatInterval)
         {
-            foreach (PlayerMovement comp in MovementComponents)
-            {
-                comp.bAllowToMove = true;
-            }
             CurTime = 0.0f;
-
-
+        
             foreach (BeatComponent comp in BeatComponents)
             {
                 comp.OnBeat();
