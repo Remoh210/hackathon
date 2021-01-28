@@ -2,6 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public enum EDirection
+{
+    UP,
+    DOWN,
+    RIGHT,
+    LEFT,
+    NONE
+}
+
 public class PlayerMovement : MonoBehaviour
 {
     //Movement stuff
@@ -9,10 +19,20 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask MovementCollision;
     public float TimeToMove = 0.2f;
 
-    //Set by beatListner component
+    public GameObject TargetDebug;
+
+    public float TargetTileCollisionRadius = 0.1f;
+
+    public KeyCode UpKey    = KeyCode.W;
+    public KeyCode DownKey  = KeyCode.S;
+    public KeyCode LeftKey  = KeyCode.A;
+    public KeyCode RightKey = KeyCode.D;
+
+
+    //Set by PlayerBeatListner component
+    [HideInInspector]
     public bool bAllowToMove = false;
 
-    private bool bIsMoving = false;
     private Vector3 OrigPos;
     private Vector3Int TargetPosition;
     private Vector2 CartesianPos;
@@ -23,36 +43,34 @@ public class PlayerMovement : MonoBehaviour
 
     private EDirection Dir;
 
-    enum EDirection
+    private void Awake()
     {
-        UP,
-        DOWN,
-        RIGHT,
-        LEFT,
-        NONE 
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {  
         Animator = transform.GetComponent<Animator>();
         TargetPosition = MovementGrid.WorldToCell(transform.position);
+        transform.position = MovementGrid.CellToWorld(TargetPosition);
         Dir = EDirection.NONE;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        HadleInput();
-
         if (bAllowToMove)
         {
-            bAllowToMove = false;
-            if (!IsColliding(TargetPosition, 0.2f) && Dir != EDirection.NONE)
+            if (TargetDebug)
+            {
+                TargetDebug.transform.position = MovementGrid.CellToWorld(TargetPosition);
+            }
+            if (IsColliding(MovementGrid.CellToWorld(TargetPosition + IsoDir), TargetTileCollisionRadius))
+            {
+                IsoDir *= -1;
+            }
+
+            if (!IsColliding(TargetPosition + IsoDir, TargetTileCollisionRadius) && Dir != EDirection.NONE)
             {
                 TargetPosition += IsoDir;
                 StartCoroutine(MovePlayer(TargetPosition));
-            }         
+            }
+
+            bAllowToMove = false;
         }
     }
 
@@ -61,8 +79,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 TargetPosWorld = MovementGrid.CellToWorld(TargetPos);
         OrigPos = transform.position;
 
-        bIsMoving = true;
-        Animator.SetFloat("Speed", 0.2f);
+        if(Animator) { Animator.SetFloat("Speed", 0.2f); }
         float ElapsedTime = 0;
         while (ElapsedTime < TimeToMove)
         {
@@ -70,10 +87,8 @@ public class PlayerMovement : MonoBehaviour
             ElapsedTime += Time.deltaTime;
             yield return null;
         }
-
         transform.position = TargetPosWorld;
-        bIsMoving = false;
-        Animator.SetFloat("Speed", 0.0f);
+        if (Animator) { Animator.SetFloat("Speed", 0.0f); }
     }
 
     private bool IsColliding(Vector3 TargetPos, float Radius)
@@ -87,27 +102,29 @@ public class PlayerMovement : MonoBehaviour
        return new Vector3(CartesianPos.x - CartesianPos.y, (CartesianPos.x + CartesianPos.y)/2, 0);
     }
 
-    private void HadleInput()
+    //Called by PlayerManagerComponent
+    public void SetDirection(EDirection Direction)
     {
-        if (Input.GetKeyDown(KeyCode.W) && !bIsMoving)
+        Dir = Direction;
+        switch (Direction)
         {
-            IsoDir = Vector3Int.up;
-            Dir = EDirection.UP;
+            case EDirection.UP:
+                IsoDir = Vector3Int.up;
+                break;
+            case EDirection.DOWN:
+                IsoDir = Vector3Int.down;
+                break;
+            case EDirection.LEFT:
+                IsoDir = Vector3Int.left;
+                break;
+            case EDirection.RIGHT:
+                IsoDir = Vector3Int.right;
+                break;
         }
-        if (Input.GetKeyDown(KeyCode.S) && !bIsMoving)
-        {
-            IsoDir = Vector3Int.down;
-            Dir = EDirection.DOWN;
-        }
-        if (Input.GetKeyDown(KeyCode.D) && !bIsMoving)
-        {
-            IsoDir = Vector3Int.right;
-            Dir = EDirection.RIGHT;
-        }
-        if (Input.GetKeyDown(KeyCode.A) && !bIsMoving)
-        {
-            IsoDir = Vector3Int.left;
-            Dir = EDirection.LEFT;
-        }
+    }
+
+    public void DisableMovement()
+    {
+        Dir = EDirection.NONE;
     }
 }

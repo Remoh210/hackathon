@@ -25,7 +25,6 @@ public class BeatPostFX : BeatComponent
         StartCoroutine(PingPongFX());
     }
 
-
     private IEnumerator PingPongFX()
     {
         for (float time = 0; time < ChromaAmpSpeed * 2; time += Time.deltaTime)
