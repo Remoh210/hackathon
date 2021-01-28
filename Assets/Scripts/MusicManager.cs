@@ -15,8 +15,9 @@ public class MusicManager : MonoBehaviour
 
     private BeatComponent[] BeatComponents;
 
-    void Start()
+    void Awake()
     {
+        Debug.Log("Starting audio");
         AudioData = GetComponent<AudioSource>();
         BeatInterval = 60.0f / (float)BeatPerMinute;
     }
