@@ -119,6 +119,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   TimeToMove: 0.2
+  TargetDebug: {fileID: 0}
   TargetTileCollisionRadius: 0.1
   UpKey: 119
   DownKey: 115
@@ -137,6 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9901bf990d30d047b6683d471c17e9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AnimationController: {fileID: 722491302974527659}
 --- !u!95 &722491302974527659
 Animator:
   serializedVersion: 3
@@ -235,8 +237,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 722491303207778870}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalPosition: {x: 0.947, y: -0.231, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 722491304308514244}
   m_RootOrder: 0
@@ -281,7 +283,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4047356686186428410, guid: 209959473a2cccf468f6f2dfc32e8089, type: 3}
+  m_Sprite: {fileID: -8398113874276346137, guid: 1393d2c6521ec8f4d850011f5dac6544, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -323,6 +325,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   TimeToMove: 0.2
+  TargetDebug: {fileID: 0}
   TargetTileCollisionRadius: 0.12
   UpKey: 273
   DownKey: 274
@@ -341,6 +344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9901bf990d30d047b6683d471c17e9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AnimationController: {fileID: 722491303207778877}
 --- !u!95 &722491303207778877
 Animator:
   serializedVersion: 3
@@ -351,7 +355,7 @@ Animator:
   m_GameObject: {fileID: 722491303207778870}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d139ccaf035d72147b4417e02a8bb3e2, type: 2}
+  m_Controller: {fileID: 9100000, guid: 4555d895e0c657c4b9064c6885cae2f3, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -377,7 +381,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.17, y: 0.16}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -540,6 +544,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   TimeToMove: 0.2
+  TargetDebug: {fileID: 0}
   TargetTileCollisionRadius: 0.1
   UpKey: 119
   DownKey: 115
@@ -558,6 +563,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9901bf990d30d047b6683d471c17e9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AnimationController: {fileID: 722491303927281925}
 --- !u!95 &722491303927281925
 Animator:
   serializedVersion: 3

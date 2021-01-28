@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Fox_Idle
+  m_Name: Raccoon_Idle_Up
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,9 +20,7 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -8398113874276346137, guid: 1393d2c6521ec8f4d850011f5dac6544, type: 3}
-    - time: 0.083333336
-      value: {fileID: 7021758612800504708, guid: 1393d2c6521ec8f4d850011f5dac6544, type: 3}
+      value: {fileID: -2107521620436496782, guid: e4ce8433e064b3244a06c068a3932abf, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -42,14 +40,13 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: -8398113874276346137, guid: 1393d2c6521ec8f4d850011f5dac6544, type: 3}
-    - {fileID: 7021758612800504708, guid: 1393d2c6521ec8f4d850011f5dac6544, type: 3}
+    - {fileID: -2107521620436496782, guid: e4ce8433e064b3244a06c068a3932abf, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.16666667
+    m_StopTime: 0.083333336
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

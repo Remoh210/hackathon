@@ -7,4 +7,6 @@ public class BeatComponent : MonoBehaviour
 {
     //Called Every beat
     public virtual void OnBeat() { }
+
+    public virtual void OnBeatStarted() {}
 }
