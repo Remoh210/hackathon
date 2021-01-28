@@ -73,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 TargetPosWorld = MovementGrid.CellToWorld(TargetPos);
         OrigPos = transform.position;
 
-        if(Animator) { Animator.SetFloat("Speed", 0.2f); }
+        //if(Animator) { Animator.SetFloat("Speed", 0.2f); }
         float ElapsedTime = 0;
         while (ElapsedTime < TimeToMove)
         {
@@ -82,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
             yield return null;
         }
         transform.position = TargetPosWorld;
-        if (Animator) { Animator.SetFloat("Speed", 0.0f); }
+        //if (Animator) { Animator.SetFloat("Speed", 0.0f); }
     }
 
     private bool IsColliding(Vector3 TargetPos, float Radius)
