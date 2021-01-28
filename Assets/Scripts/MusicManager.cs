@@ -1,16 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class MusicManager : MonoBehaviour
 {
-    [SerializeField]
-    private float BeatPerMinute = 100.0f;
+    public Action OnMusicEnded;
+
+    public int BeatPerMinute = 120;
+
+    public float BeatInterval { get; set; } = 0.0f;
 
     private AudioSource AudioData;
-
-    private float BeatInterval = 0.0f;
-
     private double StartTime;
     private double NextBeatTime;
 
@@ -18,16 +17,24 @@ public class MusicManager : MonoBehaviour
 
     void Start()
     {
-        BeatComponents = GameObject.FindObjectsOfType<BeatComponent>();
         AudioData = GetComponent<AudioSource>();
+        BeatInterval = 60.0f / (float)BeatPerMinute;
+    }
 
-        BeatInterval = 60.0f / BeatPerMinute;
+    public void StartMusic()
+    {
+        BeatComponents = GameObject.FindObjectsOfType<BeatComponent>();
 
         //Get the audio time from the audio system, this is apparently a better way of doing this
         StartTime = AudioSettings.dspTime;
         NextBeatTime = StartTime + BeatInterval;
 
         AudioData.Play(0);
+
+        foreach (BeatComponent comp in BeatComponents)
+        {
+            comp.OnBeatStarted();
+        }
     }
 
     // Update is called once per frame
@@ -37,8 +44,13 @@ public class MusicManager : MonoBehaviour
         {
             UpdateBeat();
         }
+        else if(AudioData.time >= AudioData.clip.length)
+        {
+            OnMusicEnded?.Invoke();
+        }
     }
 
+/*
     private void OnGUI()
     {
         if (GUI.Button(new Rect(10, 70, 150, 30), "Pause"))
@@ -52,7 +64,7 @@ public class MusicManager : MonoBehaviour
             AudioData.UnPause();
         }
     }
-
+*/
     private void UpdateBeat()
     {
         if (AudioSettings.dspTime > NextBeatTime)
