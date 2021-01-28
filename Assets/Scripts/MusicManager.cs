@@ -4,24 +4,30 @@ using UnityEngine;
 
 public class MusicManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    AudioSource AudioData;
+    [SerializeField]
+    private float BeatPerMinute = 100.0f;
 
-    public float BeatPerMinute = 100.0f;
+    private AudioSource AudioData;
+
     private float BeatInterval = 0.0f;
 
-    private float CurentTime;
+    private double StartTime;
+    private double NextBeatTime;
 
     private BeatComponent[] BeatComponents;
 
     void Start()
     {
+        BeatComponents = GameObject.FindObjectsOfType<BeatComponent>();
         AudioData = GetComponent<AudioSource>();
-        AudioData.Play(0);
 
         BeatInterval = 60.0f / BeatPerMinute;
 
-        BeatComponents = GameObject.FindObjectsOfType<BeatComponent>();
+        //Get the audio time from the audio system, this is apparently a better way of doing this
+        StartTime = AudioSettings.dspTime;
+        NextBeatTime = StartTime + BeatInterval;
+
+        AudioData.Play(0);
     }
 
     // Update is called once per frame
@@ -38,7 +44,7 @@ public class MusicManager : MonoBehaviour
         if (GUI.Button(new Rect(10, 70, 150, 30), "Pause"))
         {
             AudioData.Pause();
-            Debug.Log("Pause: " + AudioData.time);
+            Debug.Log("Pause: " + AudioSettings.dspTime);
         }
 
         if (GUI.Button(new Rect(10, 170, 150, 30), "Continue"))
@@ -49,10 +55,10 @@ public class MusicManager : MonoBehaviour
 
     private void UpdateBeat()
     {
-        CurentTime += Time.deltaTime;
-        if (CurentTime > BeatInterval)
+        if (AudioSettings.dspTime > NextBeatTime)
         {
-            CurentTime = 0.0f;
+            NextBeatTime += BeatInterval;
+
             foreach (BeatComponent comp in BeatComponents)
             {
                 comp.OnBeat();
