@@ -23,12 +23,6 @@ public class PlayerMovement : MonoBehaviour
 
     public float TargetTileCollisionRadius = 0.1f;
 
-    public KeyCode UpKey    = KeyCode.W;
-    public KeyCode DownKey  = KeyCode.S;
-    public KeyCode LeftKey  = KeyCode.A;
-    public KeyCode RightKey = KeyCode.D;
-
-
     //Set by PlayerBeatListner component
     [HideInInspector]
     public bool bAllowToMove = false;
