@@ -1582,11 +1582,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 722491302974527655, guid: d35d928cb4420df43ac4b1cfc7c434ed, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.171
+      value: 0.026
       objectReference: {fileID: 0}
     - target: {fileID: 722491302974527655, guid: d35d928cb4420df43ac4b1cfc7c434ed, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.459
+      value: 0.081
       objectReference: {fileID: 0}
     - target: {fileID: 722491302974527657, guid: d35d928cb4420df43ac4b1cfc7c434ed, type: 3}
       propertyPath: MovementGrid
@@ -1594,11 +1594,11 @@ PrefabInstance:
       objectReference: {fileID: 107199346}
     - target: {fileID: 722491303207778871, guid: d35d928cb4420df43ac4b1cfc7c434ed, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.208
+      value: 1.066
       objectReference: {fileID: 0}
     - target: {fileID: 722491303207778871, guid: d35d928cb4420df43ac4b1cfc7c434ed, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.099
+      value: -0.475
       objectReference: {fileID: 0}
     - target: {fileID: 722491303207778875, guid: d35d928cb4420df43ac4b1cfc7c434ed, type: 3}
       propertyPath: MovementGrid
@@ -1610,11 +1610,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 722491303927281921, guid: d35d928cb4420df43ac4b1cfc7c434ed, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.764
+      value: 0.566
       objectReference: {fileID: 0}
     - target: {fileID: 722491303927281921, guid: d35d928cb4420df43ac4b1cfc7c434ed, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.215
+      value: -0.149
       objectReference: {fileID: 0}
     - target: {fileID: 722491303927281923, guid: d35d928cb4420df43ac4b1cfc7c434ed, type: 3}
       propertyPath: MovementGrid
@@ -1871,6 +1871,14 @@ PrefabInstance:
       propertyPath: SwitchCharacterKey
       value: 303
       objectReference: {fileID: 0}
+    - target: {fileID: 6074363912515574135, guid: 3dcaa32ca1058994eb1a217934edc174, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.295
+      objectReference: {fileID: 0}
+    - target: {fileID: 6074363912515574135, guid: 3dcaa32ca1058994eb1a217934edc174, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.383
+      objectReference: {fileID: 0}
     - target: {fileID: 6074363912515574136, guid: 3dcaa32ca1058994eb1a217934edc174, type: 3}
       propertyPath: m_Color.a
       value: 1
@@ -1893,11 +1901,11 @@ PrefabInstance:
       objectReference: {fileID: 107199346}
     - target: {fileID: 6074363913353853927, guid: 3dcaa32ca1058994eb1a217934edc174, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.204
+      value: -0.218
       objectReference: {fileID: 0}
     - target: {fileID: 6074363913353853927, guid: 3dcaa32ca1058994eb1a217934edc174, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.204
+      value: -0.146
       objectReference: {fileID: 0}
     - target: {fileID: 6074363913353853928, guid: 3dcaa32ca1058994eb1a217934edc174, type: 3}
       propertyPath: m_Color.a
@@ -1923,6 +1931,14 @@ PrefabInstance:
       propertyPath: MovementGrid
       value: 
       objectReference: {fileID: 107199346}
+    - target: {fileID: 6074363913440245969, guid: 3dcaa32ca1058994eb1a217934edc174, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.698
+      objectReference: {fileID: 0}
+    - target: {fileID: 6074363913440245969, guid: 3dcaa32ca1058994eb1a217934edc174, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.18
+      objectReference: {fileID: 0}
     - target: {fileID: 6074363913440245970, guid: 3dcaa32ca1058994eb1a217934edc174, type: 3}
       propertyPath: m_Color.a
       value: 1
