@@ -41,6 +41,15 @@ TextureImporter:
   - first:
       213: -193294101686654781
     second: Tilesets_12
+  - first:
+      213: 454644792456902583
+    second: Tilesets_13
+  - first:
+      213: 7737488363373443149
+    second: Tilesets_14
+  - first:
+      213: -6304894421144870751
+    second: Tilesets_15
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -376,8 +385,8 @@ TextureImporter:
       name: Tilesets_11
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 192
+        y: 64
         width: 64
         height: 64
       alignment: 0
@@ -397,7 +406,7 @@ TextureImporter:
       name: Tilesets_12
       rect:
         serializedVersion: 2
-        x: 128
+        x: 0
         y: 0
         width: 64
         height: 64
@@ -410,6 +419,69 @@ TextureImporter:
       bones: []
       spriteID: 3c8e9c3e908415df0800000000000000
       internalID: -193294101686654781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilesets_13
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b7ff59a7093f4600800000000000000
+      internalID: 454644792456902583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilesets_14
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d48b798eba4116b60800000000000000
+      internalID: 7737488363373443149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilesets_15
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a06151cde38088a0800000000000000
+      internalID: -6304894421144870751
       vertices: []
       indices: 
       edges: []
