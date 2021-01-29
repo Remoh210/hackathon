@@ -1405,6 +1405,7 @@ MonoBehaviour:
   _musicManager: {fileID: 1510645828}
   _levels: []
   _countdownBeats: 4
+  _scores: 0000000000000000
 --- !u!1 &229903996
 GameObject:
   m_ObjectHideFlags: 0
