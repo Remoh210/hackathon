@@ -464,6 +464,8 @@ MonoBehaviour:
   - {fileID: 1228096900206321767, guid: a2d121b7272919a449bceca978a89396, type: 3}
   - {fileID: 2253695710242791854, guid: e6c3eb831558e1648a1aae1a973c72ef, type: 3}
   - {fileID: 5047468447678676, guid: 9899d65b06c39334daf213debb55eb2d, type: 3}
+  - {fileID: 2253695710242791854, guid: fd608b6e4450bbe4abe84186c2f083f2, type: 3}
+  - {fileID: 7003497659773528297, guid: 4ae668ac4922a0a42bb9ecd35af84c7c, type: 3}
   _countdownBeats: 8
   _scores: 0000000000000000
 --- !u!1 &1844486265
@@ -709,7 +711,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 536220125442783596, guid: c9161b06c4012994883ba71e9207da65, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -63.400024
+      value: -63.40004
       objectReference: {fileID: 0}
     - target: {fileID: 3828318674918750742, guid: c9161b06c4012994883ba71e9207da65, type: 3}
       propertyPath: _gameplayManager
