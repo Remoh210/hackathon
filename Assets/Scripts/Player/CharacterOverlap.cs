@@ -96,11 +96,11 @@ public class CharacterOverlap : MonoBehaviour
         {
             //Scale
             transform.localScale = Vector3.Lerp(originalScale, destinationScale, currentTime / DeahAnimDuration);
-            currentTime += Time.deltaTime;
-
             //Rotate
             float yRotation = Mathf.Lerp(startRotation, endRotation, currentTime / DeahAnimDuration) % 360.0f;
             transform.eulerAngles = new Vector3(transform.eulerAngles.x, yRotation, transform.eulerAngles.z);
+
+            currentTime += Time.deltaTime;
 
             yield return null;
         } while (currentTime <= DeahAnimDuration);

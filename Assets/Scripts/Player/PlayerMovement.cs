@@ -12,6 +12,13 @@ public enum EDirection
     NONE
 }
 
+
+public enum EFlipDir
+{
+    UP,
+    DOWN,
+}
+
 public class PlayerMovement : MonoBehaviour
 {
     //Movement stuff
@@ -22,6 +29,8 @@ public class PlayerMovement : MonoBehaviour
     public GameObject TargetDebug;
 
     public float TargetTileCollisionRadius = 0.1f;
+
+    public float FlipAnimTime = 0.5f;
 
     //Set by PlayerBeatListner component
     [HideInInspector]
@@ -37,43 +46,51 @@ public class PlayerMovement : MonoBehaviour
 
     private EDirection Dir;
 
-    private void Awake()
+    private float CurrentRotation = 0.0f;
+
+    private float TargetRotation = 0.0f;
+
+    private bool bShouldRotate = false;
+
+   private void Awake()
     {
         Animator = transform.GetComponent<Animator>();
         TargetPosition = MovementGrid.WorldToCell(transform.position);
-        transform.position = OffsetCellToWorld(TargetPosition);
+        transform.position = MovementGrid.CellToWorld(TargetPosition);
         Dir = EDirection.NONE;
-
-        //Debug.Log($"Moving player {gameObject.name} at {transform.position} to {TargetPosition}");
-    }
-
-    Vector3 OffsetCellToWorld(Vector3Int CellPosition)
-    {
-        Vector3 newPos = MovementGrid.CellToWorld(TargetPosition) + new Vector3(0, (MovementGrid.cellSize.y / 2.0f), 1);
-        //Debug.Log($"{MovementGrid.cellSize.y} - {newPos}");
-        return newPos;
     }
 
     void Update()
     {
+        
         if (bAllowToMove)
         {
+            
             if (TargetDebug)
             {
-                //Debug.Log($"At {TargetPosition} trying to move to {TargetPosition + IsoDir}");
-                TargetDebug.transform.position = OffsetCellToWorld(TargetPosition + IsoDir);
+                TargetDebug.transform.position = MovementGrid.CellToWorld(TargetPosition + IsoDir);
             }
-            
-            if (IsColliding(OffsetCellToWorld(TargetPosition + IsoDir), TargetTileCollisionRadius))
+            if (IsColliding(MovementGrid.CellToWorld(TargetPosition + IsoDir), TargetTileCollisionRadius))
             {
-                //Debug.Log($"COLLISION at {TargetPosition + IsoDir}");
+                if (CurrentRotation == 180)
+                    TargetRotation = 0;
+                else
+                    TargetRotation = 180;
+
                 IsoDir *= -1;
             }
 
             if (!IsColliding(TargetPosition + IsoDir, TargetTileCollisionRadius) && Dir != EDirection.NONE)
             {
+
+                if (CurrentRotation != TargetRotation)
+                {
+                    StartCoroutine(Flip(180));
+                    CurrentRotation = TargetRotation;
+                }
+
                 TargetPosition += IsoDir;
-                StartCoroutine(MovePlayer(TargetPosition));
+                StartCoroutine(MovePlayer(TargetPosition));            
             }
 
             bAllowToMove = false;
@@ -82,7 +99,7 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator MovePlayer(Vector3Int TargetPos)
     {
-        Vector3 TargetPosWorld = OffsetCellToWorld(TargetPos);
+        Vector3 TargetPosWorld = MovementGrid.CellToWorld(TargetPos);
         OrigPos = transform.position;
 
         //if(Animator) { Animator.SetFloat("Speed", 0.2f); }
@@ -116,9 +133,13 @@ public class PlayerMovement : MonoBehaviour
         {
             case EDirection.UP:
                 IsoDir = Vector3Int.up;
+                bShouldRotate = true;
+                TargetRotation = 180;
                 break;
             case EDirection.DOWN:
                 IsoDir = Vector3Int.down;
+                TargetRotation = 0;
+                bShouldRotate = true;
                 break;
             case EDirection.LEFT:
                 IsoDir = Vector3Int.left;
@@ -127,10 +148,30 @@ public class PlayerMovement : MonoBehaviour
                 IsoDir = Vector3Int.right;
                 break;
         }
+       
     }
 
     public void DisableMovement()
     {
         Dir = EDirection.NONE;
+    }
+
+    private IEnumerator Flip(float Angle)
+    {
+        float startRotation = transform.eulerAngles.y;
+        float endRotation = startRotation + Angle;
+
+        float currentTime = 0.0f;
+        do
+        {
+            //Rotate
+            float yRotation = Mathf.Lerp(startRotation, endRotation, currentTime / FlipAnimTime) % 360.0f;
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, yRotation, transform.eulerAngles.z);
+
+            currentTime += Time.deltaTime;
+            yield return null;
+        } while (currentTime <= FlipAnimTime);
+
+        bShouldRotate = false;
     }
 }
