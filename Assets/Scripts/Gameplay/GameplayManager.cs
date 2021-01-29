@@ -43,7 +43,8 @@ public class GameplayManager : BeatComponent
         //Todo: Load level at random? Sequence?
         if(_levels.Count > 0)
         {
-            _currentLevel = Instantiate<Level>(_levels[0]);
+            int level = Random.Range(0, _levels.Count);
+            _currentLevel = Instantiate<Level>(_levels[level]);
             _currentLevel.OnRoundWon += RoundWon;
         }
 

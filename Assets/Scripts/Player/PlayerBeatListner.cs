@@ -14,7 +14,7 @@ public class PlayerBeatListner : BeatComponent
         {
             transform.GetComponent<PlayerMovement>().bAllowToMove = true;
         }
-        Debug.Log("Beat");
+        //Debug.Log("Beat");
         AnimationController.SetTrigger("BeatTrigger");
     }
 
