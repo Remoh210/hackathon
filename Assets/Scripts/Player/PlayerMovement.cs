@@ -73,25 +73,24 @@ public class PlayerMovement : MonoBehaviour
             if (IsColliding(MovementGrid.CellToWorld(TargetPosition + IsoDir), TargetTileCollisionRadius))
             {
                 if (CurrentRotation == 180)
-                    CurrentRotation = 0;
+                    TargetRotation = 0;
                 else
-                    CurrentRotation = 180;
+                    TargetRotation = 180;
 
-                StartCoroutine(Flip(180));
                 IsoDir *= -1;
             }
 
             if (!IsColliding(TargetPosition + IsoDir, TargetTileCollisionRadius) && Dir != EDirection.NONE)
-            {             
-                TargetPosition += IsoDir;
-                StartCoroutine(MovePlayer(TargetPosition));
+            {
 
-                if(bShouldRotate)
+                if (CurrentRotation != TargetRotation)
                 {
-                    bShouldRotate = false;
                     StartCoroutine(Flip(180));
+                    CurrentRotation = TargetRotation;
                 }
-                
+
+                TargetPosition += IsoDir;
+                StartCoroutine(MovePlayer(TargetPosition));            
             }
 
             bAllowToMove = false;
@@ -134,19 +133,13 @@ public class PlayerMovement : MonoBehaviour
         {
             case EDirection.UP:
                 IsoDir = Vector3Int.up;
-                if (CurrentRotation == 0)
-                {
-                    CurrentRotation = 180;
-                    bShouldRotate = true;
-                }
+                bShouldRotate = true;
+                TargetRotation = 180;
                 break;
             case EDirection.DOWN:
                 IsoDir = Vector3Int.down;
-                if(CurrentRotation == 180)
-                {             
-                    CurrentRotation = 0;
-                    bShouldRotate = true;
-                }
+                TargetRotation = 0;
+                bShouldRotate = true;
                 break;
             case EDirection.LEFT:
                 IsoDir = Vector3Int.left;
@@ -178,5 +171,7 @@ public class PlayerMovement : MonoBehaviour
             currentTime += Time.deltaTime;
             yield return null;
         } while (currentTime <= FlipAnimTime);
+
+        bShouldRotate = false;
     }
 }
