@@ -1560,46 +1560,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 722491302974527655, guid: d35d928cb4420df43ac4b1cfc7c434ed, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.7199
-      objectReference: {fileID: 0}
-    - target: {fileID: 722491302974527655, guid: d35d928cb4420df43ac4b1cfc7c434ed, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.7127
-      objectReference: {fileID: 0}
-    - target: {fileID: 722491302974527655, guid: d35d928cb4420df43ac4b1cfc7c434ed, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.3111
-      objectReference: {fileID: 0}
-    - target: {fileID: 722491302974527655, guid: d35d928cb4420df43ac4b1cfc7c434ed, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.6026
-      objectReference: {fileID: 0}
     - target: {fileID: 722491302974527657, guid: d35d928cb4420df43ac4b1cfc7c434ed, type: 3}
       propertyPath: MovementGrid
       value: 
       objectReference: {fileID: 107199346}
-    - target: {fileID: 722491303207778871, guid: d35d928cb4420df43ac4b1cfc7c434ed, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.9704
-      objectReference: {fileID: 0}
-    - target: {fileID: 722491303207778871, guid: d35d928cb4420df43ac4b1cfc7c434ed, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.9704
-      objectReference: {fileID: 0}
-    - target: {fileID: 722491303207778871, guid: d35d928cb4420df43ac4b1cfc7c434ed, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.103
-      objectReference: {fileID: 0}
-    - target: {fileID: 722491303207778871, guid: d35d928cb4420df43ac4b1cfc7c434ed, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.087
-      objectReference: {fileID: 0}
-    - target: {fileID: 722491303207778874, guid: d35d928cb4420df43ac4b1cfc7c434ed, type: 3}
-      propertyPath: DamageLayer.m_Bits
-      value: 16
-      objectReference: {fileID: 0}
     - target: {fileID: 722491303207778875, guid: d35d928cb4420df43ac4b1cfc7c434ed, type: 3}
       propertyPath: TargetDebug
       value: 
@@ -1608,38 +1572,10 @@ PrefabInstance:
       propertyPath: MovementGrid
       value: 
       objectReference: {fileID: 107199346}
-    - target: {fileID: 722491303207778875, guid: d35d928cb4420df43ac4b1cfc7c434ed, type: 3}
-      propertyPath: MovementCollision.m_Bits
-      value: 64
-      objectReference: {fileID: 0}
-    - target: {fileID: 722491303207778875, guid: d35d928cb4420df43ac4b1cfc7c434ed, type: 3}
-      propertyPath: TargetTileCollisionRadius
-      value: 0.12
-      objectReference: {fileID: 0}
-    - target: {fileID: 722491303207778878, guid: d35d928cb4420df43ac4b1cfc7c434ed, type: 3}
-      propertyPath: m_Offset.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 722491303207778878, guid: d35d928cb4420df43ac4b1cfc7c434ed, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.27
-      objectReference: {fileID: 0}
-    - target: {fileID: 722491303927281921, guid: d35d928cb4420df43ac4b1cfc7c434ed, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.764
-      objectReference: {fileID: 0}
-    - target: {fileID: 722491303927281921, guid: d35d928cb4420df43ac4b1cfc7c434ed, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.215
-      objectReference: {fileID: 0}
     - target: {fileID: 722491303927281923, guid: d35d928cb4420df43ac4b1cfc7c434ed, type: 3}
       propertyPath: MovementGrid
       value: 
       objectReference: {fileID: 107199346}
-    - target: {fileID: 722491303927281926, guid: d35d928cb4420df43ac4b1cfc7c434ed, type: 3}
-      propertyPath: DamageLayer.m_Bits
-      value: 16
-      objectReference: {fileID: 0}
     - target: {fileID: 722491304308514243, guid: d35d928cb4420df43ac4b1cfc7c434ed, type: 3}
       propertyPath: m_Name
       value: Team1
@@ -1687,10 +1623,6 @@ PrefabInstance:
     - target: {fileID: 722491304308514244, guid: d35d928cb4420df43ac4b1cfc7c434ed, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6859508847182917866, guid: d35d928cb4420df43ac4b1cfc7c434ed, type: 3}
-      propertyPath: MoveUpKey
-      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d35d928cb4420df43ac4b1cfc7c434ed, type: 3}

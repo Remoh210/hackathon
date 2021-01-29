@@ -88,10 +88,31 @@ public class PlayerManager : MonoBehaviour
     {
         if(Character == null) { return; }
 
-        CurrentCharacter.GetComponent<PlayerMovement>().DisableMovement();
-        CurrentCharacter.GetComponent<PlayerMovement>().enabled = false;
+        PlayerMovement CurCharMovement = CurrentCharacter.GetComponent<PlayerMovement>();
+        if(CurCharMovement)
+        {
+            CurCharMovement.DisableMovement();
+            CurCharMovement.enabled = false;
+        }
 
-        Character.GetComponent<PlayerMovement>().enabled = true;
+        ParticleSystem CurCharParticle = CurrentCharacter.GetComponent<ParticleSystem>();
+        if (CurCharParticle)
+        {
+            CurCharParticle.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        }
+
+        PlayerMovement NewCharMovement = Character.GetComponent<PlayerMovement>();
+        if(NewCharMovement)
+        {
+            Character.GetComponent<PlayerMovement>().enabled = true;
+        }
+
+        ParticleSystem NewCharParticle = Character.GetComponent<ParticleSystem>();
+        if (NewCharParticle)
+        {
+            NewCharParticle.Play();
+        }
+
         CurrentCharacter = Character;
     }
 
