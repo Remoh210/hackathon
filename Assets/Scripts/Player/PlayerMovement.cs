@@ -24,6 +24,8 @@ public class PlayerMovement : MonoBehaviour
     //Movement stuff
     public Grid MovementGrid;
     public LayerMask MovementCollision;
+    public Vector2Int MaxXY;
+    public Vector2Int MinXY;
     public float TimeToMove = 0.2f;
 
     public GameObject TargetDebug;
@@ -52,6 +54,9 @@ public class PlayerMovement : MonoBehaviour
 
     private bool bShouldRotate = false;
 
+
+
+
    private void Awake()
     {
         Animator = transform.GetComponent<Animator>();
@@ -64,25 +69,47 @@ public class PlayerMovement : MonoBehaviour
     {
         
         if (bAllowToMove)
-        {
-            
+        { 
             if (TargetDebug)
             {
                 TargetDebug.transform.position = MovementGrid.CellToWorld(TargetPosition + IsoDir);
             }
-            if (IsColliding(MovementGrid.CellToWorld(TargetPosition + IsoDir), TargetTileCollisionRadius))
+
+            Vector3Int FuturePos = TargetPosition + IsoDir;
+            
+            bool bShouldReturn = false;
+            bShouldRotate = false;
+
+            if      (FuturePos.x >= MaxXY.x)
             {
-                if (CurrentRotation == 180)
-                    TargetRotation = 0;
-                else
-                    TargetRotation = 180;
+                bShouldReturn = true;
+                bShouldRotate = true;
+            }
+            else if (FuturePos.y >= MaxXY.y) { bShouldReturn = true; }
+            else if (FuturePos.x <= MinXY.x)
+            {
+                bShouldReturn = true;
+                bShouldRotate = true;
+            }
+            else if (FuturePos.y <= MinXY.y)  { bShouldReturn = true; }
+
+            if (bShouldReturn)
+            {
+                if(bShouldReturn)
+                {
+                    if (CurrentRotation == 180)
+                        TargetRotation = 0;
+                    else
+                        TargetRotation = 180;
+                }
 
                 IsoDir *= -1;
             }
 
-            if (!IsColliding(TargetPosition + IsoDir, TargetTileCollisionRadius) && Dir != EDirection.NONE)
-            {
 
+            if(Dir != EDirection.NONE)
+            {
+                Debug.LogFormat("Current Rot {0}, Tartget Rot{1}", CurrentRotation, TargetRotation);
                 if (CurrentRotation != TargetRotation)
                 {
                     StartCoroutine(Flip(180));
@@ -90,8 +117,23 @@ public class PlayerMovement : MonoBehaviour
                 }
 
                 TargetPosition += IsoDir;
-                StartCoroutine(MovePlayer(TargetPosition));            
+                StartCoroutine(MovePlayer(TargetPosition));
+
+
             }
+
+            //if (!IsColliding(TargetPosition + IsoDir, TargetTileCollisionRadius) && Dir != EDirection.NONE)
+            //{
+
+            //    if (CurrentRotation != TargetRotation)
+            //    {
+            //        StartCoroutine(Flip(180));
+            //        CurrentRotation = TargetRotation;
+            //    }
+
+            //    TargetPosition += IsoDir;
+            //    StartCoroutine(MovePlayer(TargetPosition));            
+            //}
 
             bAllowToMove = false;
         }
@@ -171,7 +213,5 @@ public class PlayerMovement : MonoBehaviour
             currentTime += Time.deltaTime;
             yield return null;
         } while (currentTime <= FlipAnimTime);
-
-        bShouldRotate = false;
     }
 }
