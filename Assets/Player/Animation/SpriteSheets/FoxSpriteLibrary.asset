@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bf7c34a0dc4e6348bea04faa70406ee, type: 3}
+  m_Name: FoxSpriteLibrary
+  m_EditorClassIdentifier: 
+  m_Labels:
+  - m_Name: Fox
+    m_Hash: 938321414
+    m_CategoryList:
+    - m_Name: Idle_Up
+      m_Hash: 2139721285
+      m_Sprite: {fileID: -8398113874276346137, guid: 1393d2c6521ec8f4d850011f5dac6544, type: 3}
+    - m_Name: Idle_Down
+      m_Hash: -209973304
+      m_Sprite: {fileID: 7021758612800504708, guid: 1393d2c6521ec8f4d850011f5dac6544, type: 3}
+  - m_Name: GreyFox
+    m_Hash: -714911620
+    m_CategoryList:
+    - m_Name: Idle_Up
+      m_Hash: 2139721285
+      m_Sprite: {fileID: 7756453715758260096, guid: f07a2ffae5677c141bcea9aa2126dabf, type: 3}
+    - m_Name: Idle_Down
+      m_Hash: -209973304
+      m_Sprite: {fileID: -7093228754856310142, guid: f07a2ffae5677c141bcea9aa2126dabf, type: 3}
