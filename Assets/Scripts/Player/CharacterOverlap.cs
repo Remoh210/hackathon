@@ -74,6 +74,11 @@ public class CharacterOverlap : MonoBehaviour
     }
     private void Die()
     {
+        ParticleSystem SelectionParticleSystem = GetComponent<ParticleSystem>();
+        if(SelectionParticleSystem)
+        {
+            SelectionParticleSystem.Stop();
+        }
         StartCoroutine(DeathAnimation());
     }
 
