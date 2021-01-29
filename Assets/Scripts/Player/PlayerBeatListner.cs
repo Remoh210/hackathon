@@ -9,7 +9,12 @@ public class PlayerBeatListner : BeatComponent
 
     public override void OnBeat()
     {
-        transform.GetComponent<PlayerMovement>().bAllowToMove = true;
+        PlayerMovement Movement = GetComponent<PlayerMovement>();
+        if(Movement)
+        {
+            transform.GetComponent<PlayerMovement>().bAllowToMove = true;
+        }
+        Debug.Log("Beat");
         AnimationController.SetTrigger("BeatTrigger");
     }
 
