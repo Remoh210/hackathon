@@ -51,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (TargetDebug)
             {
-                TargetDebug.transform.position = MovementGrid.CellToWorld(TargetPosition);
+                TargetDebug.transform.position = MovementGrid.CellToWorld(TargetPosition + IsoDir);
             }
             if (IsColliding(MovementGrid.CellToWorld(TargetPosition + IsoDir), TargetTileCollisionRadius))
             {

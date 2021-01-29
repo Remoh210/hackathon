@@ -11,7 +11,9 @@ public class CharacterOverlap : MonoBehaviour
 {
     public int Team;
     public ECharacterType CharacterType;
-   
+    public LayerMask DamageLayer;
+    public float DeahAnimDuration = 0.7f;
+
     private BoxCollider2D Collider;
 
     void Start()
@@ -30,8 +32,8 @@ public class CharacterOverlap : MonoBehaviour
 
     private void DoCollision(Collider2D col)
     {
-        GameObject Enemy = col.gameObject;
-        CharacterOverlap enemyOverlapComp = Enemy.GetComponent<CharacterOverlap>();
+        GameObject CollidedGameObjet = col.gameObject;
+        CharacterOverlap enemyOverlapComp = CollidedGameObjet.GetComponent<CharacterOverlap>();
         if(enemyOverlapComp)
         {
             if(Team == enemyOverlapComp.Team)
@@ -63,9 +65,41 @@ public class CharacterOverlap : MonoBehaviour
                     break;
             }
         }
+
+
+        if ((DamageLayer & 1 << CollidedGameObjet.layer) == 1 << CollidedGameObjet.layer)
+        {        
+            Die();
+        }
     }
     private void Die()
     {
+        StartCoroutine(DeathAnimation());
+    }
+
+    private IEnumerator DeathAnimation()
+    {
+        gameObject.GetComponent<PlayerMovement>().enabled = false;
+        Vector3 originalScale = transform.localScale;
+        Vector3 destinationScale = new Vector3(0.0f, 0.0f, 0.0f);
+
+        float startRotation = transform.eulerAngles.y;
+        float endRotation = startRotation + 720.0f;
+
+        float currentTime = 0.0f;
+        do
+        {
+            //Scale
+            transform.localScale = Vector3.Lerp(originalScale, destinationScale, currentTime / DeahAnimDuration);
+            currentTime += Time.deltaTime;
+
+            //Rotate
+            float yRotation = Mathf.Lerp(startRotation, endRotation, currentTime / DeahAnimDuration) % 360.0f;
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, yRotation, transform.eulerAngles.z);
+
+            yield return null;
+        } while (currentTime <= DeahAnimDuration);
+
         gameObject.SetActive(false);
     }
 }
