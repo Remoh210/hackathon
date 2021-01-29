@@ -203,5 +203,7 @@ public class PlayerMovement : MonoBehaviour
             currentTime += Time.deltaTime;
             yield return null;
         } while (currentTime <= FlipAnimTime);
+
+        transform.eulerAngles = new Vector3(transform.eulerAngles.x, endRotation, transform.eulerAngles.z);
     }
 }
