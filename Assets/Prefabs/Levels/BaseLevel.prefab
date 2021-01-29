@@ -1381,7 +1381,8 @@ PrefabInstance:
       propertyPath: MovementGrid
       value: 
       objectReference: {fileID: 6133115592432025426}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4646778194518635471, guid: 516d6c036c187dc46990ebaf91a492b9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 516d6c036c187dc46990ebaf91a492b9, type: 3}
 --- !u!4 &3677698637590135886 stripped
 Transform:
