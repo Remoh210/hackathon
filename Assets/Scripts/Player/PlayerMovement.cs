@@ -56,12 +56,17 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-
-   private void Awake()
+    Vector3 OffsetCellToWorld(Vector3Int CellPosition)
+    {
+        Vector3 newPos = MovementGrid.CellToWorld(TargetPosition) + new Vector3(0, (MovementGrid.cellSize.y / 2.0f), 1);
+        //Debug.Log($"{MovementGrid.cellSize.y} - {newPos}");
+        return newPos;
+    }
+    private void Awake()
     {
         Animator = transform.GetComponent<Animator>();
         TargetPosition = MovementGrid.WorldToCell(transform.position);
-        transform.position = MovementGrid.CellToWorld(TargetPosition);
+        transform.position = OffsetCellToWorld(TargetPosition);
         Dir = EDirection.NONE;
     }
 
@@ -72,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
         { 
             if (TargetDebug)
             {
-                TargetDebug.transform.position = MovementGrid.CellToWorld(TargetPosition + IsoDir);
+                TargetDebug.transform.position = OffsetCellToWorld(TargetPosition + IsoDir);
             }
 
             Vector3Int FuturePos = TargetPosition + IsoDir;
@@ -80,22 +85,29 @@ public class PlayerMovement : MonoBehaviour
             bool bShouldReturn = false;
             bShouldRotate = false;
 
-            if      (FuturePos.x >= MaxXY.x)
+            if(FuturePos.x >= MaxXY.x)
             {
+                bShouldReturn = true;
+            }
+            else if (FuturePos.y >= MaxXY.y)
+            {
+
                 bShouldReturn = true;
                 bShouldRotate = true;
             }
-            else if (FuturePos.y >= MaxXY.y) { bShouldReturn = true; }
             else if (FuturePos.x <= MinXY.x)
             {
-                bShouldReturn = true;
-                bShouldRotate = true;
+                bShouldReturn = true; 
             }
-            else if (FuturePos.y <= MinXY.y)  { bShouldReturn = true; }
+            else if (FuturePos.y <= MinXY.y)
+            {
+                bShouldRotate = true;
+                bShouldReturn = true;
+            }
 
             if (bShouldReturn)
             {
-                if(bShouldReturn)
+                if(bShouldRotate)
                 {
                     if (CurrentRotation == 180)
                         TargetRotation = 0;
@@ -141,7 +153,7 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator MovePlayer(Vector3Int TargetPos)
     {
-        Vector3 TargetPosWorld = MovementGrid.CellToWorld(TargetPos);
+        Vector3 TargetPosWorld = OffsetCellToWorld(TargetPos);
         OrigPos = transform.position;
 
         //if(Animator) { Animator.SetFloat("Speed", 0.2f); }

@@ -124,9 +124,12 @@ MonoBehaviour:
   MovementCollision:
     serializedVersion: 2
     m_Bits: 64
+  MaxXY: {x: 30, y: 13}
+  MinXY: {x: 19, y: 2}
   TimeToMove: 0.2
   TargetDebug: {fileID: 0}
   TargetTileCollisionRadius: 0.1
+  FlipAnimTime: 0.5
   bAllowToMove: 0
 --- !u!114 &722491302974527658
 MonoBehaviour:
@@ -5104,9 +5107,12 @@ MonoBehaviour:
   MovementCollision:
     serializedVersion: 2
     m_Bits: 64
+  MaxXY: {x: 30, y: 13}
+  MinXY: {x: 19, y: 2}
   TimeToMove: 0.2
   TargetDebug: {fileID: 0}
   TargetTileCollisionRadius: 0.12
+  FlipAnimTime: 0.5
   bAllowToMove: 0
 --- !u!114 &722491303207778876
 MonoBehaviour:
@@ -10101,9 +10107,12 @@ MonoBehaviour:
   MovementCollision:
     serializedVersion: 2
     m_Bits: 64
+  MaxXY: {x: 30, y: 13}
+  MinXY: {x: 19, y: 2}
   TimeToMove: 0.2
   TargetDebug: {fileID: 0}
   TargetTileCollisionRadius: 0.1
+  FlipAnimTime: 0.5
   bAllowToMove: 0
 --- !u!114 &722491303927281924
 MonoBehaviour:

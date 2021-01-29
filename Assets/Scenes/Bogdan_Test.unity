@@ -1563,41 +1563,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 722491302974527657, guid: d35d928cb4420df43ac4b1cfc7c434ed, type: 3}
-      propertyPath: MaxXY.x
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 722491302974527657, guid: d35d928cb4420df43ac4b1cfc7c434ed, type: 3}
-      propertyPath: MaxXY.y
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 722491302974527657, guid: d35d928cb4420df43ac4b1cfc7c434ed, type: 3}
-      propertyPath: MinXY.x
-      value: 19
-      objectReference: {fileID: 0}
-    - target: {fileID: 722491302974527657, guid: d35d928cb4420df43ac4b1cfc7c434ed, type: 3}
-      propertyPath: MinXY.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 722491302974527657, guid: d35d928cb4420df43ac4b1cfc7c434ed, type: 3}
       propertyPath: MovementGrid
       value: 
       objectReference: {fileID: 107199346}
-    - target: {fileID: 722491303207778875, guid: d35d928cb4420df43ac4b1cfc7c434ed, type: 3}
-      propertyPath: MaxXY.x
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 722491303207778875, guid: d35d928cb4420df43ac4b1cfc7c434ed, type: 3}
-      propertyPath: MaxXY.y
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 722491303207778875, guid: d35d928cb4420df43ac4b1cfc7c434ed, type: 3}
-      propertyPath: MinXY.x
-      value: 19
-      objectReference: {fileID: 0}
-    - target: {fileID: 722491303207778875, guid: d35d928cb4420df43ac4b1cfc7c434ed, type: 3}
-      propertyPath: MinXY.y
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 722491303207778875, guid: d35d928cb4420df43ac4b1cfc7c434ed, type: 3}
       propertyPath: TargetDebug
       value: 
@@ -1606,22 +1574,6 @@ PrefabInstance:
       propertyPath: MovementGrid
       value: 
       objectReference: {fileID: 107199346}
-    - target: {fileID: 722491303927281923, guid: d35d928cb4420df43ac4b1cfc7c434ed, type: 3}
-      propertyPath: MaxXY.x
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 722491303927281923, guid: d35d928cb4420df43ac4b1cfc7c434ed, type: 3}
-      propertyPath: MaxXY.y
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 722491303927281923, guid: d35d928cb4420df43ac4b1cfc7c434ed, type: 3}
-      propertyPath: MinXY.x
-      value: 19
-      objectReference: {fileID: 0}
-    - target: {fileID: 722491303927281923, guid: d35d928cb4420df43ac4b1cfc7c434ed, type: 3}
-      propertyPath: MinXY.y
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 722491303927281923, guid: d35d928cb4420df43ac4b1cfc7c434ed, type: 3}
       propertyPath: MovementGrid
       value: 
