@@ -12,6 +12,13 @@ public enum EDirection
     NONE
 }
 
+
+public enum EFlipDir
+{
+    UP,
+    DOWN,
+}
+
 public class PlayerMovement : MonoBehaviour
 {
     //Movement stuff
@@ -22,6 +29,8 @@ public class PlayerMovement : MonoBehaviour
     public GameObject TargetDebug;
 
     public float TargetTileCollisionRadius = 0.1f;
+
+    public float FlipAnimTime = 0.5f;
 
     //Set by PlayerBeatListner component
     [HideInInspector]
@@ -37,7 +46,13 @@ public class PlayerMovement : MonoBehaviour
 
     private EDirection Dir;
 
-    private void Awake()
+    private float CurrentRotation = 0.0f;
+
+    private float TargetRotation = 0.0f;
+
+    private bool bShouldRotate = false;
+
+   private void Awake()
     {
         Animator = transform.GetComponent<Animator>();
         TargetPosition = MovementGrid.WorldToCell(transform.position);
@@ -47,21 +62,36 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        
         if (bAllowToMove)
         {
+            
             if (TargetDebug)
             {
                 TargetDebug.transform.position = MovementGrid.CellToWorld(TargetPosition + IsoDir);
             }
             if (IsColliding(MovementGrid.CellToWorld(TargetPosition + IsoDir), TargetTileCollisionRadius))
             {
+                if (CurrentRotation == 180)
+                    CurrentRotation = 0;
+                else
+                    CurrentRotation = 180;
+
+                StartCoroutine(Flip(180));
                 IsoDir *= -1;
             }
 
             if (!IsColliding(TargetPosition + IsoDir, TargetTileCollisionRadius) && Dir != EDirection.NONE)
-            {
+            {             
                 TargetPosition += IsoDir;
                 StartCoroutine(MovePlayer(TargetPosition));
+
+                if(bShouldRotate)
+                {
+                    bShouldRotate = false;
+                    StartCoroutine(Flip(180));
+                }
+                
             }
 
             bAllowToMove = false;
@@ -104,9 +134,19 @@ public class PlayerMovement : MonoBehaviour
         {
             case EDirection.UP:
                 IsoDir = Vector3Int.up;
+                if (CurrentRotation == 0)
+                {
+                    CurrentRotation = 180;
+                    bShouldRotate = true;
+                }
                 break;
             case EDirection.DOWN:
                 IsoDir = Vector3Int.down;
+                if(CurrentRotation == 180)
+                {             
+                    CurrentRotation = 0;
+                    bShouldRotate = true;
+                }
                 break;
             case EDirection.LEFT:
                 IsoDir = Vector3Int.left;
@@ -115,10 +155,28 @@ public class PlayerMovement : MonoBehaviour
                 IsoDir = Vector3Int.right;
                 break;
         }
+       
     }
 
     public void DisableMovement()
     {
         Dir = EDirection.NONE;
+    }
+
+    private IEnumerator Flip(float Angle)
+    {
+        float startRotation = transform.eulerAngles.y;
+        float endRotation = startRotation + Angle;
+
+        float currentTime = 0.0f;
+        do
+        {
+            //Rotate
+            float yRotation = Mathf.Lerp(startRotation, endRotation, currentTime / FlipAnimTime) % 360.0f;
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, yRotation, transform.eulerAngles.z);
+
+            currentTime += Time.deltaTime;
+            yield return null;
+        } while (currentTime <= FlipAnimTime);
     }
 }

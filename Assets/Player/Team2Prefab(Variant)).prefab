@@ -73,7 +73,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 722491304308514243, guid: d35d928cb4420df43ac4b1cfc7c434ed, type: 3}
       propertyPath: m_Name
-      value: Team2
+      value: Team2Prefab(Variant))
       objectReference: {fileID: 0}
     - target: {fileID: 722491304308514244, guid: d35d928cb4420df43ac4b1cfc7c434ed, type: 3}
       propertyPath: m_RootOrder
