@@ -117,4 +117,14 @@ public class PlayerManager : MonoBehaviour
         }
         
     }
+
+    public bool CheckAlive()
+    {
+        for(int i = 0; i < Characters.Length; i++)
+        {
+            if(Characters[i].activeSelf) return true;
+        }
+
+        return false;
+    }
 }

@@ -24,7 +24,7 @@ public class MusicManager : MonoBehaviour
 
     public void StartMusic()
     {
-        BeatComponents = GameObject.FindObjectsOfType<BeatComponent>();
+        RecacheBeatComponents();
 
         //Get the audio time from the audio system, this is apparently a better way of doing this
         StartTime = AudioSettings.dspTime;
@@ -34,10 +34,16 @@ public class MusicManager : MonoBehaviour
 
         foreach (BeatComponent comp in BeatComponents)
         {
-            comp.OnBeatStarted();
+            comp?.OnBeatStarted();
         }
     }
 
+    public void RecacheBeatComponents()
+    {
+        Debug.Log("Recaching beat components");
+        BeatComponents = GameObject.FindObjectsOfType<BeatComponent>();
+    }
+    
     // Update is called once per frame
     void Update()
     {
@@ -74,7 +80,7 @@ public class MusicManager : MonoBehaviour
 
             foreach (BeatComponent comp in BeatComponents)
             {
-                comp.OnBeat();
+                comp?.OnBeat();
             }
         }
     }
