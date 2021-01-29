@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
 {
     //Movement stuff
     public Grid MovementGrid;
-    public LayerMask MovementCollision;
+    //public LayerMask MovementCollision;
     public Vector2Int MaxXY;
     public Vector2Int MinXY;
     public float TimeToMove = 0.2f;
@@ -59,7 +59,6 @@ public class PlayerMovement : MonoBehaviour
     Vector3 OffsetCellToWorld(Vector3Int CellPosition)
     {
         Vector3 newPos = MovementGrid.CellToWorld(TargetPosition) + new Vector3(0, (MovementGrid.cellSize.y / 2.0f), 1);
-        //Debug.Log($"{MovementGrid.cellSize.y} - {newPos}");
         return newPos;
     }
     private void Awake()
@@ -121,7 +120,7 @@ public class PlayerMovement : MonoBehaviour
 
             if(Dir != EDirection.NONE)
             {
-                Debug.LogFormat("Current Rot {0}, Tartget Rot{1}", CurrentRotation, TargetRotation);
+                //Debug.LogFormat("Current Rot {0}, Tartget Rot{1}", CurrentRotation, TargetRotation);
                 if (CurrentRotation != TargetRotation)
                 {
                     StartCoroutine(Flip(180));
@@ -130,22 +129,7 @@ public class PlayerMovement : MonoBehaviour
 
                 TargetPosition += IsoDir;
                 StartCoroutine(MovePlayer(TargetPosition));
-
-
             }
-
-            //if (!IsColliding(TargetPosition + IsoDir, TargetTileCollisionRadius) && Dir != EDirection.NONE)
-            //{
-
-            //    if (CurrentRotation != TargetRotation)
-            //    {
-            //        StartCoroutine(Flip(180));
-            //        CurrentRotation = TargetRotation;
-            //    }
-
-            //    TargetPosition += IsoDir;
-            //    StartCoroutine(MovePlayer(TargetPosition));            
-            //}
 
             bAllowToMove = false;
         }
@@ -166,12 +150,6 @@ public class PlayerMovement : MonoBehaviour
         }
         transform.position = TargetPosWorld;
         //if (Animator) { Animator.SetFloat("Speed", 0.0f); }
-    }
-
-    private bool IsColliding(Vector3 TargetPos, float Radius)
-    {
-        bool bIsCollidng = Physics2D.OverlapCircle(TargetPos, Radius, MovementCollision);
-        return bIsCollidng;
     }
 
     private Vector3 CartesianToIso(Vector3 CartesianPos)
