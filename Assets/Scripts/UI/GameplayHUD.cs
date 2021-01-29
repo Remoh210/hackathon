@@ -9,6 +9,9 @@ public class GameplayHUD : MonoBehaviour
     Text _countdownText;
 
     [SerializeField]
+    Text _scoreText;
+
+    [SerializeField]
     GameplayManager _gameplayManager;
 
     public void Update()
@@ -22,5 +25,7 @@ public class GameplayHUD : MonoBehaviour
         _countdownText.enabled = countdown > 0;
 
         _countdownText.text = countdown.ToString();
+
+        _scoreText.text = $"{_gameplayManager.GetScore(0)} : {_gameplayManager.GetScore(1)}";
     }
 }

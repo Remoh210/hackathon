@@ -198,6 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _countdownText: {fileID: 6062068467492816834}
+  _scoreText: {fileID: 191494875334006411}
   _gameplayManager: {fileID: 0}
 --- !u!1 &536220123951110301
 GameObject:
